@@ -17,10 +17,10 @@
 
 #include <ArduinoBLE.h>
 
-BLEService motorService("19B10000-E8F2-537E-4F6C-D104768A1214"); // Bluetooth® Low Energy MOTOR Service
+BLEService motorService("bcd83f84-3f46-41df-b9f9-0d4e6365de5d"); // Bluetooth® Low Energy MOTOR Service
 
 // Bluetooth® Low Energy MOTOR Switch Characteristic - custom 128-bit UUID, read and writable by central
-BLEByteCharacteristic switchCharacteristic("19B10001-E8F2-537E-4F6C-D104768A1214", BLERead | BLEWrite);
+BLEByteCharacteristic switchCharacteristic("bcd83f84-3f46-41df-b9f9-0d4e6365de5d", BLERead | BLEWrite);
 
 const int motorPin = 13; // pin to use for the MOTOR
 
