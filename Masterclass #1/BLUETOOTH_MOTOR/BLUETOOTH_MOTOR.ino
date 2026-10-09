@@ -1,20 +1,3 @@
-/*
-  MOTOR
-
-  This example creates a Bluetooth® Low Energy peripheral with service that contains a
-  characteristic to control an MOTOR.
-
-  The circuit:
-  - Arduino MKR WiFi 1010, Arduino Uno WiFi Rev2 board, Arduino Nano 33 IoT,
-    Arduino Nano 33 BLE, or Arduino Nano 33 BLE Sense board.
-
-  You can use a generic Bluetooth® Low Energy central app, like LightBlue (iOS and Android) or
-  nRF Connect (Android), to interact with the services and characteristics
-  created in this sketch.
-
-  This example code is in the public domain.
-*/
-
 #include <ArduinoBLE.h>
 
 BLEService motorService("bcd83f84-3f46-41df-b9f9-0d4e6365de5d"); // Bluetooth® Low Energy MOTOR Service
@@ -72,10 +55,10 @@ void loop() {
     // while the central is still connected to peripheral:
     while (central.connected()) {
       // if the remote device wrote to the characteristic,
-      // use the value to control the LED:
+      // use the value to control the motor:
       if (switchCharacteristic.written()) {   // any value other than 0
         Serial.println("MOTOR on");
-        analogWrite(motorPin, switchCharacteristic.value());         // will turn the LED on
+        analogWrite(motorPin, switchCharacteristic.value());         // will turn the motor on full power
       }
     }
 
