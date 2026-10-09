@@ -1,8 +1,8 @@
 /*
-  LED
+  MOTOR
 
   This example creates a Bluetooth® Low Energy peripheral with service that contains a
-  characteristic to control an LED.
+  characteristic to control an MOTOR.
 
   The circuit:
   - Arduino MKR WiFi 1010, Arduino Uno WiFi Rev2 board, Arduino Nano 33 IoT,
@@ -17,9 +17,9 @@
 
 #include <ArduinoBLE.h>
 
-BLEService motorService("19B10000-E8F2-537E-4F6C-D104768A1214"); // Bluetooth® Low Energy LED Service
+BLEService motorService("19B10000-E8F2-537E-4F6C-D104768A1214"); // Bluetooth® Low Energy MOTOR Service
 
-// Bluetooth® Low Energy LED Switch Characteristic - custom 128-bit UUID, read and writable by central
+// Bluetooth® Low Energy MOTOR Switch Characteristic - custom 128-bit UUID, read and writable by central
 BLEByteCharacteristic switchCharacteristic("19B10001-E8F2-537E-4F6C-D104768A1214", BLERead | BLEWrite);
 
 const int motorPin = 13; // pin to use for the MOTOR
@@ -28,7 +28,7 @@ void setup() {
   Serial.begin(9600);
   while (!Serial);
 
-  // set LED pin to output mode
+  // set MOTOR pin to output mode
   pinMode(motorPin, OUTPUT);
 
   // begin initialization
@@ -67,18 +67,15 @@ void loop() {
     // print the central's MAC address:
     Serial.println(central.address());
 
+
+
     // while the central is still connected to peripheral:
     while (central.connected()) {
       // if the remote device wrote to the characteristic,
       // use the value to control the LED:
-      if (switchCharacteristic.written()) {
-        if (switchCharacteristic.value()) {   // any value other than 0
-          Serial.println("MOTOR on");
-          analogWrite(motorPin, 255);         // will turn the LED on
-        } else {                              // a 0 value
-          Serial.println(F("MOTOR off"));
-          analogWrite(motorPin, 0);          // will turn the LED off
-        }
+      if (switchCharacteristic.written()) {   // any value other than 0
+        Serial.println("MOTOR on");
+        analogWrite(motorPin, switchCharacteristic.value());         // will turn the LED on
       }
     }
 
