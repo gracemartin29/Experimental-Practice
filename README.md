@@ -2,7 +2,7 @@
 A collection of my work and experimentation from Bsc3a's Masterclasses.
 
 ### Masterclass #1: [Bluetooth and Arduino](link)
-### Masterclass #2: [Raspberry Pi and Websockets](link)
+### Masterclass #2: [Raspberry Pi and Websockets](https://github.com/gracemartin29/Raspberry-Pi-and-Websockets.git)
 ### Masterclass #3: [H-Bridges](link)
 ### Masterclass #4: [Kinectic Sculptures](link)
 ### Masterclass #5: [](link)
